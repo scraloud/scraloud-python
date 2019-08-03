@@ -4,5 +4,8 @@ import requests
 
 
 def export(data):
-    response = requests.post(os.environ.get("SCRALOUD_ITEM_URL"), json=data)
-    return response.status_code == 200
+    item_url = os.environ.get("SCRALOUD_ITEM_URL")
+    spider_id = os.environ.get("SCRALOUD_SPIDER_ID")
+    url = item_url + "?spider_id=" + spider_id
+    response = requests.post(url, json=data)
+    return response
